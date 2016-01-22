@@ -55,13 +55,18 @@ def api_jobs():
                                         cachetime=4000,
                                         as_type='dict',
                                         opt_fields='name,team,archived,notes')
+        for i in projects:
+            if i['name'] == 'Bugs':
+                projects = [i]
+                break
+
         all_tasks = []
 
         pool = Pool(31)
 
         lists = pool.map(my_project_tasks,
                          [p for p in projects if not p['archived']])
-
+        print "-=-=-=-=-=-=-"
 
         for project_tasks in lists:
             all_tasks += project_tasks

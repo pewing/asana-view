@@ -27,12 +27,31 @@ a:active {
 }
 
 .task {
-    background: #333;
+    background: #808785;
     color: #777;
     margin: 0.2%;
-    border: 1px solid #888;
-    width: 45%;
+    width: 49.5%;
     display: inline-block;
+}
+
+.task.p1 {
+    background: #EB4C5F;
+
+}
+
+.task.p2 {
+    background: #00B4EF;
+
+}
+
+.task.p3 {
+    background: #01B5A4;
+
+}
+
+.task.p0 {
+    background: #808785;
+
 }
 
 .task h1 {

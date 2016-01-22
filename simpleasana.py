@@ -128,28 +128,22 @@ def get_project_tasks(api_key, project):
     '''
 
     asana = SimpleAsana(api_key)
-    now = datetime.now()
-    soon = now + timedelta(days=6)
 
     raw_tasks = asana.project_tasks(project['id'],
                                     opt_fields='name,completed,due_on,'
                                                'completed_at,assignee,'
-                                               'assignee_status')
+                                               'assignee_status,memberships.section.name')
 
     tasks = []
 
     for task in [t for t in raw_tasks if not t['completed']]:
         if task['assignee']:
-            if task['due_on']:
-                task['due_on'] = datetime.strptime(task['due_on'], "%Y-%m-%d")
-                if task['due_on'] < now:
-                    task['time_class'] = 'past'
-                elif task['due_on'] < soon:
-                    task['time_class'] = 'soon'
-                else:
-                    task['time_class'] = 'sometime'
-                task['project'] = project
+            if task['memberships'][0]['section']:
+                task['section'] = task['memberships'][0]['section']['name']
+            else:
+                task['section'] = 'P0'
 
-                tasks.append(task)
+            task['project'] = project
+            tasks.append(task)
 
     return tasks
