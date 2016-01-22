@@ -139,9 +139,9 @@ def get_project_tasks(api_key, project):
     for task in [t for t in raw_tasks if not t['completed']]:
         if task['assignee']:
             if task['memberships'][0]['section']:
-                task['section'] = task['memberships'][0]['section']['name']
-            else:
-                task['section'] = 'P0'
+                task['section'] = task['memberships'][0]['section']['name'][:-1]
+            # else:
+            #     task['section'] = 'P0'
 
             task['project'] = project
             tasks.append(task)

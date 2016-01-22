@@ -12,14 +12,14 @@ var _jobs = {};
 function sortjob(job){
     // returns a string which can be used for sorting each job sensibly.
     var total = 0;
-    if (job.time_class == 'past')
-        return 'a' + Date.parse(job.due_on);
-    else if (job.time_class == 'soon')
+    if (job.section == 'P1')
         return 'b' + Date.parse(job.due_on);
-    else if (job.due_on) 
+    if (job.section == 'P2')
         return 'c' + Date.parse(job.due_on);
+    if (job.section == 'P3')
+        return 'd' + Date.parse(job.due_on);
     else
-        return 'd';
+        return 'a';
 }
 
 
@@ -27,13 +27,16 @@ function sortjob(job){
 function job_html(job) {
     // HTML Template.
     console.log(job.name);
-    return ( '<div class="task ' + job.time_class + '" ' + 
+    return ( '<div class="task ' + (job.section ? job.section : 'P0') + '" ' +
                   'id="' + job.id + '" ' +
                   'data-sortpos="'+sortjob(job)+'">' +
+                  '<div class="info">' +
                  ( job.assignee ?  '<h1>' + __USERS__[job.assignee.id].name.split(' ')[0] + '</h1>' : '<h1>???</h1>') +
+                 '<h2 class="priority ' + ( job.section ?  job.section + '">' + job.section : 'unknown>?' ) +  '</h2>' +
+                 '</div>' +
                  '<div class="details">' +
-                     '<h2>' + job.name + '</h2>' +
-                     (job.project ? ('<h3>' + job.project.name + '</h3>'): 'unknown') +
+                     '<h3>' + job.name + '</h3>' +
+//                     (job.project ? ('<h3>' + job.project.name + '</h3>'): 'unknown') +
              '</div></div>' );
 }
 

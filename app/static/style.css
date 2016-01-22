@@ -1,7 +1,7 @@
 body {
-        background: #222;
-        font-family: Tahoma, Sans-Serif;
-        font-weight: 100;
+    background: #222;
+    font-family: Tahoma, Sans-Serif;
+    font-weight: 100;
 }
 
 h1, h2,h3 {
@@ -10,9 +10,15 @@ h1, h2,h3 {
     color: #eee;
     margin:0;
 }
-h3 {
-    opacity: 0.7;
+
+h2 {
+    font-size: 225%;
 }
+
+h3 {
+    vertical-align: middle;
+}
+
 a {
     color: blue;
     font-weight: bold;
@@ -32,38 +38,70 @@ a:active {
     margin: 0.2%;
     width: 49.5%;
     display: inline-block;
+    font-family: Raleway;
+    vertical-align: middle;
 }
 
-.task.p1 {
+.task.P1 {
     background: #EB4C5F;
-
 }
 
-.task.p2 {
+.task.P2 {
     background: #00B4EF;
-
 }
 
-.task.p3 {
+.task.P3 {
     background: #01B5A4;
-
 }
 
-.task.p0 {
+.task.P0 {
     background: #808785;
+}
 
+.priority {
+    display: block;
+    clear: both;
+    /*float: left;*/
+    .P1 {
+
+    }
+}
+
+.priority.P1 {
+    color: #88112B;
+}
+
+.priority.P2 {
+    color: #106A7D;
+}
+
+.priority.P3 {
+    color: #00665C;
+}
+
+.priority.unknown {
+    color: #141616;
 }
 
 .task h1 {
     display: block;
-    float: left;
-    width: 30%;
+    clear: both;
+    /*float: left;*/
+    /*width: 30%;*/
 }
 .task .details {
-    float: left;
+    float: right;
     width: 68%;
     min-height: 6em;
 }
+
+.task .info {
+    float: left;
+    height: 100%;
+    width: 30%;
+    min-height: 6em;
+}
+
 .nada {
     display: none;
 }
