@@ -32,7 +32,7 @@ function job_html(job) {
                   'data-sortpos="'+sortjob(job)+'">' +
                   '<div class="info">' +
                  ( job.assignee ?  '<h1>' + __USERS__[job.assignee.id].name.split(' ')[0] + '</h1>' : '<h1>???</h1>') +
-                 '<h2 class="priority ' + ( job.section ?  job.section + '">' + job.section : 'unknown>?' ) +  '</h2>' +
+                 '<h2 class="priority ' + ( job.section ?  job.section + '">' + job.section : 'unknown">?' ) +  '</h2>' +
                  '</div>' +
                  '<div class="details">' +
                      '<h3>' + job.name + '</h3>' +
