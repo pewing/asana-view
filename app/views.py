@@ -59,7 +59,7 @@ def api_jobs():
 
         pool = Pool(31)
 
-        project_list = ['Bugs', 'Ops', 'General & Company', 'Avatar Creation']
+        project_list = ['Ops', 'General & Company', 'Avatar Creation']
 
         lists = pool.map(my_project_tasks,
                          [p for p in projects if not p['archived'] and p['name'] in project_list])
