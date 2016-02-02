@@ -26,6 +26,10 @@ a:active {
     color: red;
 }
 
+#projects {
+    height: 1000px;
+}
+
 .task {
     background: #333;
     color: #777;
@@ -33,6 +37,8 @@ a:active {
     border: 1px solid #888;
     width: 45%;
     display: inline-block;
+    height: 8%;
+    background-color: #00B4EF;
 }
 
 .task h1 {
@@ -43,7 +49,9 @@ a:active {
 .task .details {
     float: left;
     width: 68%;
-    min-height: 6em;
+    height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .nada {
     display: none;

@@ -59,14 +59,25 @@ def api_jobs():
 
         pool = Pool(31)
 
+        project_list = ['Bugs', 'Ops', 'General & Company', 'Avatar Creation']
+
         lists = pool.map(my_project_tasks,
-                         [p for p in projects if not p['archived']])
+                         [p for p in projects if not p['archived'] and p['name'] in project_list])
 
 
         for project_tasks in lists:
             all_tasks += project_tasks
 
-        return jsonify({"tasks": all_tasks})
+        employee_dict = []
+        curred_tasks = []
+
+        for task in all_tasks:
+            person = task['assignee']['id']
+            if person not in employee_dict:
+                curred_tasks.append(task)
+                employee_dict.append(person)
+
+        return jsonify({"tasks": curred_tasks})
 
     except Exception as e: # pylint: disable=broad-except
         return str(e)

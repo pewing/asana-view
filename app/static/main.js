@@ -33,7 +33,6 @@ function job_html(job) {
                  ( job.assignee ?  '<h1>' + __USERS__[job.assignee.id].name.split(' ')[0] + '</h1>' : '<h1>???</h1>') +
                  '<div class="details">' +
                      '<h2>' + job.name + '</h2>' +
-                     (job.project ? ('<h3>' + job.project.name + '</h3>'): 'unknown') +
              '</div></div>' );
 }
 
