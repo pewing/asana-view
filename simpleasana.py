@@ -127,6 +127,10 @@ def get_project_tasks(api_key, project):
         re-parsed, with time_class, etc.
     '''
 
+    # print "__________"
+    # print project
+    # print "========================="
+
     asana = SimpleAsana(api_key)
     now = datetime.now()
     soon = now + timedelta(days=6)
@@ -134,9 +138,12 @@ def get_project_tasks(api_key, project):
     raw_tasks = asana.project_tasks(project['id'],
                                     opt_fields='name,completed,due_on,'
                                                'completed_at,assignee,'
-                                               'assignee_status')
-
+                                               'assignee_status,memberships.section.name')
     tasks = []
+
+    # for i in raw_tasks:
+    #     print i
+    #     print "------"
 
     for task in [t for t in raw_tasks if not t['completed']]:
         if task['assignee']:
