@@ -138,7 +138,7 @@ def get_project_tasks(api_key, project):
     raw_tasks = asana.project_tasks(project['id'],
                                     opt_fields='name,completed,due_on,'
                                                'completed_at,assignee,'
-                                               'assignee_status,memberships.section.name')
+                                               'assignee_status,memberships.section.name,tags.name')
     tasks = []
 
     # for i in raw_tasks:
@@ -147,6 +147,9 @@ def get_project_tasks(api_key, project):
 
     for task in [t for t in raw_tasks if not t['completed']]:
         if task['assignee']:
+            if task['tags']:
+                if task['tags']['name'] == "Top Priority":
+                    print task
             # if task['due_on']:
             #     task['due_on'] = datetime.strptime(task['due_on'], "%Y-%m-%d")
             #     if task['due_on'] < now:
@@ -156,7 +159,7 @@ def get_project_tasks(api_key, project):
             #     else:
             #         task['time_class'] = 'sometime'
             #     task['project'] = project
-            tasks.append(task)
+                    tasks.append(task)
 
 
     return tasks
