@@ -148,7 +148,7 @@ def get_project_tasks(api_key, project):
     for task in [t for t in raw_tasks if not t['completed']]:
         if task['assignee']:
             if task['tags']:
-                if task['tags']['name'] == "Top Priority":
+                if task['tags'][0]['name'] == "Top Priority":
                     print task
             # if task['due_on']:
             #     task['due_on'] = datetime.strptime(task['due_on'], "%Y-%m-%d")
