@@ -18,6 +18,8 @@ function sortjob(job){
         return 'c' + Date.parse(job.due_on);
     if (job.section == 'P3')
         return 'd' + Date.parse(job.due_on);
+    if (job.section == 'Post-MVP')
+        return 'e' + Date.parse(job.due_on);
     else
         return 'a';
 }
